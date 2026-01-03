@@ -4,7 +4,7 @@ info:
   version: 1.0.0
 
 servers:
-  - url: https://gateway.yourdomain.com
+  - url: https://honowork.notifierservice.workers.dev
 
 components:
   securitySchemes:
