@@ -1,0 +1,36 @@
+openapi: 3.0.3
+info:
+  title: Microsoft Graph Gateway
+  version: 1.0.0
+
+servers:
+  - url: https://gateway.yourdomain.com
+
+components:
+  securitySchemes:
+    microsoftOAuth:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            User.Read: Read user profile
+            Mail.Read: Read user mail
+
+paths:
+  /api/me:
+    get:
+      security:
+        - microsoftOAuth: [User.Read]
+      responses:
+        "200":
+          description: Current user profile
+
+  /api/mail:
+    get:
+      security:
+        - microsoftOAuth: [Mail.Read]
+      responses:
+        "200":
+          description: User mail
